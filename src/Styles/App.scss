@@ -1,0 +1,24 @@
+// GOOGLE FONTS
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Sunflower:wght@300&display=swap");
+
+// CSS RESET
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Sunflower", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  color: rgb(54, 54, 54);
+}
+
+@import "./CurrentSong";
+@import "./Player";

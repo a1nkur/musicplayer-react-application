@@ -1,0 +1,32 @@
+.player-container {
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.time-controller {
+  width: 50%; // setting the width of the div to 50% of the screen
+  display: flex; // this will align all the items inside the div horizontally
+  // in sass we can directly style input element here
+  input {
+    width: 100%; // this will stretch the input field to 100% w.r.t to 50% of the screen.
+    // padding: 1rem 2rem;
+  }
+
+  p {
+    padding: 1rem;
+  }
+}
+
+.play-controller {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  svg {
+    cursor: pointer;
+  }
+}
