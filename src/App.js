@@ -1,17 +1,22 @@
 import { useState } from "react";
 import "./Styles/App.scss";
-import CurrentSong from "./Components/CurrentSong";
+import Song from "./Components/Song";
 import Player from "./Components/Player";
-import chillHop from "./Data/data";
+import chillHop from "./Utility/data";
 
 function App() {
-  const [songs, setSongs] = useState(chillHop());
-  const [defaultSong, setDefaultSong] = useState(songs[2]);
+  const [songs, setSongs] = useState(chillHop()); // array of all the songs
+  const [currentSong, setCurrentSong] = useState(songs[0]); // default song
+  const [isPlaying, setIsPlaying] = useState(false); // state to toggle between Play() and Pause()
 
   return (
     <div className="App">
-      <CurrentSong defaultSong={defaultSong} />
-      <Player />
+      <Song currentSong={currentSong} />
+      <Player
+        currentSong={currentSong}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+      />
     </div>
   );
 }
