@@ -3,6 +3,7 @@ import "./Styles/App.scss";
 import Song from "./Components/Song";
 import Player from "./Components/Player";
 import chillHop from "./Utility/data";
+import Library from "./Components/Library";
 
 function App() {
   const [songs, setSongs] = useState(chillHop()); // array of all the songs
@@ -17,6 +18,7 @@ function App() {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
       />
+      <Library songs={songs} setCurrentSong={setCurrentSong} />
     </div>
   );
 }

@@ -22,7 +22,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
 
   // Event Handlers
   const songPlayHandler = () => {
-    console.log(audioRef); // > { current: audio }
+    //console.log(audioRef); > { current: audio }
 
     // Upon play icon click we invoke the play function
     if (isPlaying) {
@@ -80,7 +80,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
         ref={audioRef}
         onTimeUpdate={timeUpdateHandler}
         onLoadedMetadata={timeUpdateHandler}
-      />{" "}
+      />
     </div>
   );
 };
