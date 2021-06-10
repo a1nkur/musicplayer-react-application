@@ -18,7 +18,7 @@ function App() {
   const [libraryStatus, setLibraryStatus] = useState(false);
 
   // Ref
-  const audioRef = useRef(null); // Initiated useRef hook, null is passed because we dont want anything solid in here right now.
+  const audioRef = useRef(null); // Initiated useRef hook, null is passed because we dont want anything solid in here right now. console.log(audioRef) => {current:audio}
 
   // Event Handlers
   const timeUpdateHandler = e => {
@@ -44,6 +44,7 @@ function App() {
         songInfo={songInfo}
         setSongInfo={setSongInfo}
         songs={songs}
+        setSongs={setSongs}
       />
       <Library
         songs={songs}

@@ -1,5 +1,5 @@
 .song-container {
-  min-height: 60vh; // 60vh === 60% viewport height of visible webpage. If the height contentis less than 60% then then this will be applied.
+  min-height: 60vh; // 60vh === 60% viewport height of visible webpage. If the height of all content together is less than 60% then then this will be applied.
   display: flex; // For aligning items. This will align each item inside this hoizontally(row)
   flex-direction: column; // This will align each item inside this verticallylly(column)
   align-items: center; // Align items to the center inside this container

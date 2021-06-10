@@ -51,9 +51,9 @@
     }
   }
 }
+/******************************************************************************/
 
-/* The emerging W3C standard
-   that is currently Firefox-only */
+/* The emerging W3C standard that is currently Firefox-only */
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
@@ -71,6 +71,8 @@
   border-radius: 20px;
   border: transparent;
 }
+
+/******************************************************************************/
 
 .selected {
   background: rgb(240, 199, 199);

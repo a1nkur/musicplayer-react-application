@@ -1,4 +1,6 @@
 // This component describes the music controller - play, skip-forward, skip-backward, slider.
+
+import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Gives React Component for icons
 import {
   faPlay,
@@ -8,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import getFormattedTime from "../Utility/formatTime";
+import playAudio from "../Utility/playAudio";
 
 const Player = ({
   songs,
@@ -17,9 +20,27 @@ const Player = ({
   setIsPlaying,
   audioRef,
   songInfo,
-  setSongInfo,
+  setSongs,
 }) => {
-  // State data for Time on player
+  // useEffect
+  useEffect(() => {
+    // Show selected song in UI
+    const newSongArr = songs.map(eachItem => {
+      if (eachItem.id === currentSong.id) {
+        return {
+          ...eachItem,
+          active: true,
+        };
+      } else {
+        return {
+          ...eachItem,
+          active: false,
+        };
+      }
+    });
+
+    setSongs(newSongArr);
+  }, [currentSong]);
 
   // Event Handlers
   const songPlayHandler = () => {
@@ -41,18 +62,23 @@ const Player = ({
   };
 
   const onSkipHandler = direction => {
+    // Finding the index of current song
     let currentIndex = songs.findIndex(item => item.id === currentSong.id);
+
     if (direction === "skip-forward") {
-      setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+      setCurrentSong(songs[(currentIndex + 1) % songs.length]); // variable x % constant y = x; it is 0 only when x = y
     }
 
     if (direction === "skip-back") {
-      if ((currentIndex - 1) % songs.length === 1) {
+      if ((currentIndex - 1) % songs.length === -1) {
         setCurrentSong(songs[songs.length - 1]);
+        playAudio(isPlaying, audioRef);
         return;
       }
-      setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+      setCurrentSong(songs[(currentIndex - 1) % songs.length]);
     }
+
+    playAudio(isPlaying, audioRef);
   };
 
   const onDragHandler = e => {
@@ -60,20 +86,24 @@ const Player = ({
     audioRef.current.currentTime = e.target.value;
 
     // Change state with the update current time upon onDragChange so that slider can work
-    setSongInfo({ ...songInfo, currentTime: e.target.value });
+    // setSongInfo({ ...songInfo, currentTime: e.target.value });
   };
 
   return (
     <div className="player-container">
       <div className="time-controller">
         <p>{getFormattedTime(songInfo.currentTime)}</p>
-        <input
-          type="range"
-          min={0}
-          max={songInfo.duration || 0}
-          value={songInfo.currentTime}
-          onChange={onDragHandler}
-        />
+        <div className="track">
+          <input
+            type="range"
+            min={0}
+            max={songInfo.duration || 0}
+            value={songInfo.currentTime}
+            onChange={onDragHandler}
+          />
+          <div className="animate-track"></div>
+        </div>
+
         <p>
           {getFormattedTime(songInfo.duration) === "NaN:aN"
             ? "0:00"

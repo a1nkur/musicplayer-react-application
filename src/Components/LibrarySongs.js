@@ -1,3 +1,5 @@
+import playAudio from "../Utility/playAudio";
+
 const LibrarySongs = ({
   eachSong,
   setCurrentSong,
@@ -9,13 +11,6 @@ const LibrarySongs = ({
   const handleCurrentSong = e => {
     const selectedSong = songs.filter(item => item.id === eachSong.id);
     setCurrentSong(selectedSong[0]);
-
-    if (isPlaying) {
-      const audioPromise = audioRef.current.play();
-      if (audioPromise !== undefined) {
-        audioPromise.then(audio => audioRef.current.play());
-      }
-    }
 
     // Show selected song
     const newSongArr = songs.map(eachItem => {
@@ -33,6 +28,9 @@ const LibrarySongs = ({
     });
 
     setSongs(newSongArr);
+
+    // Play Audio
+    playAudio(isPlaying, audioRef);
   };
 
   return (

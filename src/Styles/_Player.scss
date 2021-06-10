@@ -12,7 +12,11 @@
   // in sass we can directly style input element here
   input {
     width: 100%; // this will stretch the input field to 100% w.r.t to 50% of the screen.
-    // padding: 1rem 2rem;
+
+    // Stripping all the default styles
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
   }
 
   p {
@@ -23,10 +27,21 @@
 .play-controller {
   width: 30%;
   display: flex;
-  // align-items: center;
   justify-content: space-between;
   padding: 1rem;
   svg {
     cursor: pointer;
   }
+}
+
+input[type="range"]:focus {
+  outline: none; 
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  background: black;
+
 }
