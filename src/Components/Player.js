@@ -93,17 +93,13 @@ const Player = ({
     <div className="player-container">
       <div className="time-controller">
         <p>{getFormattedTime(songInfo.currentTime)}</p>
-        <div className="track">
-          <input
-            type="range"
-            min={0}
-            max={songInfo.duration || 0}
-            value={songInfo.currentTime}
-            onChange={onDragHandler}
-          />
-          <div className="animate-track"></div>
-        </div>
-
+        <input
+          type="range"
+          min={0}
+          max={songInfo.duration || 0}
+          value={songInfo.currentTime}
+          onChange={onDragHandler}
+        />
         <p>
           {getFormattedTime(songInfo.duration) === "NaN:aN"
             ? "0:00"

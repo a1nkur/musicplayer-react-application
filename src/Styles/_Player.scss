@@ -10,13 +10,14 @@
   width: 50%; // setting the width of the div to 50% of the screen
   display: flex; // this will align all the items inside the div horizontally
   // in sass we can directly style input element here
+
   input {
     width: 100%; // this will stretch the input field to 100% w.r.t to 50% of the screen.
 
     // Stripping all the default styles
-    -webkit-appearance: none;
-    background: transparent;
-    cursor: pointer;
+    // -webkit-appearance: none;
+    // background: transparent;
+    // cursor: pointer;
   }
 
   p {
@@ -34,14 +35,14 @@
   }
 }
 
-input[type="range"]:focus {
-  outline: none; 
-}
+// input[type="range"]:focus {
+//   outline: none;
+// }
 
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 16px;
-  width: 16px;
-  background: black;
+// input[type="range"]::-webkit-slider-thumb {
+//   -webkit-appearance: none;
+//   height: 16px;
+//   width: 16px;
+//   background: black;
 
-}
+// }
