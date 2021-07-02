@@ -20,6 +20,7 @@ const Player = ({
   setIsPlaying,
   audioRef,
   songInfo,
+  setSongInfo,
   setSongs,
 }) => {
   // useEffect
@@ -86,7 +87,9 @@ const Player = ({
     audioRef.current.currentTime = e.target.value;
 
     // Change state with the update current time upon onDragChange so that slider can work
-    // setSongInfo({ ...songInfo, currentTime: e.target.value });
+    setSongInfo(prevState => {
+      return { ...prevState, currentTime: e.target.value };
+    });
   };
 
   return (
@@ -96,7 +99,7 @@ const Player = ({
         <input
           type="range"
           min={0}
-          max={songInfo.duration || 0}
+          max={songInfo.duration}
           value={songInfo.currentTime}
           onChange={onDragHandler}
         />
@@ -133,7 +136,8 @@ const Player = ({
 export default Player;
 
 // <audio></audio> => An audio HTML Element
-// <audio> prop=onTimeUpdate is a special eventHandler for audio html element. It is fired everytime the Time changes for the played audio.
+// <audio> prop=onTimeUpdate is a special eventHandler for audio html element. It fires an event object everytime the "Time" changes for the played audio.
 
 // to render the duration of track in UI during the first render on the component, we have a much efficient prop callled onLoadedMetadata which will fire an event containing the duration property when the audio element loads up in the browser.
+
 // <audio> prop= onLoadedMetadata={timeUpdateHandler} -> When the audio file loads up, it automatically sets the data.
