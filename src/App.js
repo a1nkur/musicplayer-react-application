@@ -25,9 +25,12 @@ function App() {
     let duration = e.target.duration;
     let currentTime = e.target.currentTime;
 
-    setSongInfo({
-      currentTime: currentTime,
-      duration: duration,
+    setSongInfo(prevState => {
+      return {
+        ...prevState,
+        currentTime,
+        duration,
+      };
     });
   };
 

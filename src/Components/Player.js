@@ -49,7 +49,7 @@ const Player = ({
     // Upon play icon click we invoke the play function
     if (isPlaying) {
       audioRef.current.pause(); // Play audio
-      setIsPlaying(false);
+      setIsPlaying(prevState => !prevState);
     } else {
       // audioRef.current.play(); // Pause audio
       // setIsPlaying(true);
@@ -57,7 +57,7 @@ const Player = ({
       if (audioPromise !== undefined) {
         audioPromise.then(audio => audioRef.current.play());
       }
-      setIsPlaying(true);
+      setIsPlaying(prevState => !prevState);
     }
   };
 
